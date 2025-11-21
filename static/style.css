@@ -1,0 +1,50 @@
+body {
+    font-family: Arial;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+nav {
+    background: #eee;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+nav a {
+    margin-right: 15px;
+    text-decoration: none;
+    color: #333;
+}
+
+.album {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+    background: #f9f9f9;
+}
+
+.error {
+    color: red;
+    background: #ffe6e6;
+    padding: 10px;
+}
+
+.success {
+    color: green;
+    background: #e6ffe6;
+    padding: 10px;
+}
+
+input {
+    padding: 5px;
+    margin: 5px;
+}
+
+button {
+    padding: 8px 15px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}

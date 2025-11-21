@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Загрузить JSON файл</h2>
+
+{% if error %}
+    <p class="error">{{ error }}</p>
+{% endif %}
+
+{% if success %}
+    <p class="success">{{ success }}</p>
+{% endif %}
+
+<form method="post" enctype="multipart/form-data">
+    <p><input type="file" name="file" accept=".json" required></p>
+    <button type="submit">Загрузить</button>
+</form>
+{% endblock %}

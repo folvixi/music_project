@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Все альбомы</h2>
+
+{% if message %}
+    <p>{{ message }}</p>
+{% endif %}
+
+{% if albums %}
+    {% for album in albums %}
+    <div class="album">
+        <h3>{{ album.title }}</h3>
+        <p>Исполнитель: {{ album.artist }}</p>
+        <p>Год: {{ album.year }}</p>
+        <p>Песен: {{ album.songs }}</p>
+    </div>
+    {% endfor %}
+{% endif %}
+{% endblock %}

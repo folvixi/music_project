@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Музыкальные альбомы</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav>
+        <a href="/">Главная</a>
+        <a href="/add/">Добавить альбом</a>
+        <a href="/upload/">Загрузить JSON</a>
+        <a href="/albums/">Все альбомы</a>
+    </nav>
+    
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
