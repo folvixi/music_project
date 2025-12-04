@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  # сервис для базы данных postgresql
+  db:
+    image: postgres:15
+    container_name: music_db
+    environment:
+      POSTGRES_DB: musicdb
+      POSTGRES_USER: musicuser
+      POSTGRES_PASSWORD: musicpassword
+    volumes:
+      # том для хранения данных базы
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  # сервис для django приложения
+  web:
+    build: .
+    container_name: music_web
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      # том для json файлов
+      - ./json_files:/app/json_files
+      # том для статических файлов
+      - ./static:/app/static
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      # переменные для подключения к postgresql
+      DATABASE_URL: postgresql://musicuser:musicpassword@db:5432/musicdb
+      SECRET_KEY: django-insecure-za7!@kq3r9b^m$x5p&v8s-w2yh4j6n1l-c8d9f2g3h4i5j6k7
+      DEBUG: "True"
+
+# тома для хранения данных
+volumes:
+  postgres_data:

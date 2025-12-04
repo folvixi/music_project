@@ -126,4 +126,37 @@ import os
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')] # папка для CSS
 JSON_DIR = os.path.join(BASE_DIR, 'json_files') # папка для JSON файлов
 
-ALLOWED_HOSTS = ['*']  # временно для тестов
+
+
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-za7!@kq3r9b^m$x5p&v8s-w2yh4j6n1l-c8d9f2g3h4i5j6k7')
+DEBUG = os.environ.get('DEBUG', 'True') == 'True'
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+import dj_database_url
+# если есть переменная DATABASE_URL, используем postgresql
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=os.environ.get('DATABASE_URL'),
+            conn_max_age=600
+        )
+    }
+else:
+    # иначе используем sqlite (для разработки)
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+
+# статические файлы
+STATIC_URL = 'static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # для collectstatic
+
+# медиа файлы
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# папка для json файлов
+JSON_DIR = os.environ.get('JSON_DIR', os.path.join(BASE_DIR, 'json_files'))
