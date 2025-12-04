@@ -125,3 +125,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 import os
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')] # папка для CSS
 JSON_DIR = os.path.join(BASE_DIR, 'json_files') # папка для JSON файлов
+
+ALLOWED_HOSTS = ['*']  # временно для тестов

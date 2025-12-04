@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h2 class="mb-4">Редактировать альбом</h2>
+        
+        <form method="post">
+            <div class="mb-3">
+                <label class="form-label">Название альбома</label>
+                <input type="text" name="title" class="form-control" value="{{ album.title }}" required>
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label">Исполнитель</label>
+                <input type="text" name="artist" class="form-control" value="{{ album.artist }}" required>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Год выпуска</label>
+                    <input type="number" name="year" class="form-control" value="{{ album.year }}" min="1900" max="2025" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Количество песен</label>
+                    <input type="number" name="songs" class="form-control" value="{{ album.songs }}" min="1" required>
+                </div>
+            </div>
+            
+            
+            
+            <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+            <a href="{% url 'show_albums' %}" class="btn btn-secondary">Отмена</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

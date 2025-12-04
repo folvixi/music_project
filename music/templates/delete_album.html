@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h2 class="mb-4">Удаление альбома</h2>
+        
+        <div class="alert alert-danger">
+            <h5>Вы уверены, что хотите удалить альбом?</h5>
+            <p><strong>{{ album.title }}</strong> - {{ album.artist }} ({{ album.year }})</p>
+        </div>
+        
+        <form method="post">
+            <button type="submit" class="btn btn-danger">Да, удалить</button>
+            <a href="{% url 'show_albums' %}" class="btn btn-secondary">Нет, отмена</a>
+        </form>
+    </div>
+</div>
+{% endblock %}
